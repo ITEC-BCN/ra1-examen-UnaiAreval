@@ -3,6 +3,7 @@ package com.example.adivinaapp.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -28,7 +29,7 @@ fun MenuScreen(navCont: NavController) {
                 .constrainAs(title){
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                    top.linkTo(parent.top, margin = 100.dp)
+                    bottom.linkTo(startGame.top, margin = 10.dp)
                 }
         )
 
@@ -40,7 +41,7 @@ fun MenuScreen(navCont: NavController) {
                 .constrainAs(image){
                   start.linkTo(parent.start)
                   end.linkTo(parent.end)
-                  top.linkTo(title.bottom, margin = 40.dp)
+                  bottom.linkTo(startGame.top, margin = 40.dp)
                 }
 
         )
@@ -49,10 +50,12 @@ fun MenuScreen(navCont: NavController) {
             onClick = { navCont.navigate("Game") },
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(20.dp)
                 .constrainAs(startGame){
-                    end.linkTo(parent.end, margin = 20.dp)
-                    start.linkTo(parent.start, margin = 20.dp)
-                    top.linkTo(image.bottom, margin = 40.dp)
+                    end.linkTo(parent.end)
+                    start.linkTo(parent.start)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
                 }
         ) {
             Text("Iniciar Partida")
